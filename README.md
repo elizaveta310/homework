@@ -32,4 +32,102 @@ class CustomerReview(models.Model):
     name = models.CharField(max_length=255)
     review = models.TextField()
     rating = models.IntegerField(choices=[(i, i) for i in range(1, 6)])
+
+
+    # homework 13.08
+
+    #Task1
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{% block header %}{% endblock %}</h1>
+        <nav>
+            <ul>
+    <li><a href="{% url 'home' %}">Home</a></li>
+    <li><a href="{% url 'menu' %}">Menu & Pricing</a></li>
+    <li><a href="{% url 'chefs' %}">Master Chefs</a></li>
+    <li><a href="{% url 'services' %}">Our Service</a></li>
+    <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ restaurant.name }}</p>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+
+# Task 2
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}{% endblock %}</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static 'css/style.css' %}">
+</head>
+<body>
+    <header>
+        <h1>{% block header %}{% endblock %}</h1>
+        <nav>
+            <ul>
+                <li><a href="{% url 'home' %}">Home</a></li>
+                <li><a href="{% url 'menu' %}">Menu & Pricing</a></li>
+                <li><a href="{% url 'chefs' %}">Master Chefs</a></li>
+                <li><a href="{% url 'services' %}">Our Service</a></li>
+                <li><a href="{% url 'contact' %}">Contact Us</a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+
+    <footer>
+        <p>&copy; {{ restaurant.name }}</p>
+    </footer>
+
+    <script src="{% static 'js/script.js' %}"></script>
+</body>
+</html>
+
+{% extends 'base.html' %}
+
+{% block title %}Home{% endblock %}
+
+{% block header %}
+    {{ restaurant.name }}
+{% endblock %}
+
+{% block content %}
+    <h1>Добро пожаловать!</h1>
+    <p>{{ restaurant.description }}</p>
+    <img src="{{ restaurant.image.url }}" alt="Фото ресторана">
+    <p>Наши шеф-повара готовят:</p>
+    <ul>
+        {% for dish in dishes %}
+            <li>{{ dish.name }}</li>
+        {% endfor %}
+    </ul>
+{% endblock %}
+
+
+
     created_at = models.DateTimeField(auto_now_add=True)
