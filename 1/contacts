@@ -1,1 +1,33 @@
-
+   </div>
+            <div class="row justify-content-center">
+                <div class="col-lg-6">
+                <form>
+                <form action="{% url 'contacts:index' %}" method="post">
+                    {% csrf_token %}
+                    <div class="row g-3">
+                            <div class="col-sm-6">
+                                {{ message_form.name }}
+                                <div class="invalid-feedback">
+                                    {{ message_form.name.errors }}
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                {{ message_form.email }}
+                                <div class="invalid-feedback">
+                                    {{ message_form.email.errors }}
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                {{ message_form.subject }}
+                                <div class="invalid-feedback">
+                                    {{ message_form.subject.errors }}
+                                </div>
+                            </div>
+                            <div class="col-sm-12">
+                                {{ message_form.message }}
+                                <div class="invalid-feedback">
+                                    {{ message_form.message.errors }}
+                                </div>
+                            </div>
+                        </div>
+                    <div class="col-sm-12">
