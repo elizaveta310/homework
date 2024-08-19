@@ -1,0 +1,14 @@
+  <p>Amet justo diam dolor rebum lorem sit stet sea justo kasd</p>
+                            <form action="">
+                                {% csrf_token %}
+                                {{ subscriber_form.as_p }}
+{#                                <div class="input-group">#}
+{#                                    <input type="text" class="form-control border-white p-3" placeholder="Your Email">#}
+                                <div class="input-group">
+                                    {{ subscriber_form.email }}
+                                    <button class="btn btn-primary">Sign Up</button>
+{#                                </div>#}
+                                </div>
+                            </form>
+                        </div>
+                    </div>
