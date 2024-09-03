@@ -1,0 +1,14 @@
+from django.shortcuts import render
+from .models import Cake, Category
+
+def home(request):
+    cakes = Cake.objects.all()
+    return render(request, 'cakes/home.html', {'cakes': cakes})
+
+def cake_detail(request, cake_id):
+    cake = Cake.objects.get(id=cake_id)
+    return render(request, 'cakes/cake_detail.html', {'cake': cake})
+
+def category_list(request):
+    categories = Category.objects.all()
+    return render(request, 'cakes/categories.html', {'categories': categories})
