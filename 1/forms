@@ -1,0 +1,14 @@
+from django import forms
+from .models import MessageFormCustomer,
+
+
+class MessageFromCostumerForm(forms.ModelForm):
+    class Meta:
+        model = MessageFromCostumer
+        fields = ('name', 'email', 'subject', 'message')
+
+
+class SubscriberForm(forms.ModelForm):
+    class Meta:
+        model = Subscriber
+        fields = ('email',)
